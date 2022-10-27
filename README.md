@@ -28,4 +28,5 @@ Java8, SpringBoot 2.6.13, JPA, Spring Security, MySQL 5.7, Junit5
     6. 가계부에서 상세한 세부 내역을 볼 수 있습니다.
 4. 로그인하지 않은 고객은 가계부 내역에 대한 접근 제한 처리가 되어야 합니다.
 
-
+# ERD
+![ERD](/Users/jeongheekim/Downloads/accountbook.png)  
