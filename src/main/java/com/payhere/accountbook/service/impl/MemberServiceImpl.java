@@ -4,9 +4,11 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
+import com.payhere.accountbook.domain.dto.AuthenticatedUser;
 import com.payhere.accountbook.domain.dto.MemberSignUpDto;
 import com.payhere.accountbook.domain.enntity.Member;
 import com.payhere.accountbook.exception.ExistMemberException;
+import com.payhere.accountbook.exception.NotExistMemberException;
 import com.payhere.accountbook.repository.MemberRepository;
 import com.payhere.accountbook.service.MemberService;
 
@@ -28,9 +30,9 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member signUp(MemberSignUpDto memberSignUpDto) {
 
-		boolean isExistMem = isExistMember(memberSignUpDto);
+		boolean isExist = isExistMember(memberSignUpDto);
 		Member memberEntity = new Member();
-		if(isExistMem) {
+		if(isExist) {
 			memberEntity.setMemberName(memberSignUpDto.getName());
 			memberEntity.setMemberEmail(memberSignUpDto.getEmail());
 			memberEntity.setMemberPassword(memberSignUpDto.getPassword());
@@ -49,4 +51,6 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return true;
 	}
+
+
 }

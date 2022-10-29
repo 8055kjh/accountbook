@@ -6,6 +6,7 @@ package com.payhere.accountbook.domain;
  *
  */
 public enum SpecificExceptionCode {
+	NOT_EXIST_MEMBER_EXCEPTION(500,'M',"가입되지않은 회원의 정보입니다."),
 	EXIST_MEMBER_EXCEPTION(500,'M',"이미 가입된 회원의 정보입니다."),
 	VALIDATION_EXCEPTION(400,'M',"입력값이 잘못되었습니다.");
 	private final int httpCode;
