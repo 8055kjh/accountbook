@@ -4,11 +4,9 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
-import com.payhere.accountbook.domain.dto.AuthenticatedUser;
 import com.payhere.accountbook.domain.dto.MemberSignUpDto;
 import com.payhere.accountbook.domain.enntity.Member;
 import com.payhere.accountbook.exception.ExistMemberException;
-import com.payhere.accountbook.exception.NotExistMemberException;
 import com.payhere.accountbook.repository.MemberRepository;
 import com.payhere.accountbook.service.MemberService;
 
