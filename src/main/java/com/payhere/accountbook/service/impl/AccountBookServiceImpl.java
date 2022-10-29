@@ -1,5 +1,7 @@
 package com.payhere.accountbook.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.payhere.accountbook.domain.dto.reqeust.AccountBookRegisterDto;
@@ -35,5 +37,15 @@ public class AccountBookServiceImpl implements AccountBookService {
 		accountBook.setMemo(dto.getMemo());
 
 		accountBookRepository.save(accountBook);
+	}
+
+	@Override
+	public List<AccountBook> getAccountBookList() {
+		return accountBookRepository.findAll();
+	}
+
+	@Override
+	public AccountBook getAccountBook(Long accountBookNo) {
+		return accountBookRepository.findByAccountBookNo(accountBookNo);
 	}
 }

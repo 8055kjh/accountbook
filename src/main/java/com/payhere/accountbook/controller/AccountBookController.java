@@ -4,6 +4,8 @@ import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,4 +37,16 @@ public class AccountBookController {
 		accountBookService.registerAccountBook(accountBookRegisterDto, user.getMemberNo());
 		return ResponseEntity.ok().build();
 	}
+	//가계부 목록 조회
+	@GetMapping
+	public ResponseEntity<?> getAccountBookList() {
+		return ResponseEntity.ok().body(accountBookService.getAccountBookList());
+	}
+
+	//가계부 조회
+	@GetMapping("/{accountBookNo}")
+	public ResponseEntity<?> getAccountBook(@PathVariable Long accountBookNo) {
+		return ResponseEntity.ok().body(accountBookService.getAccountBook(accountBookNo));
+	}
+	// - [ ]  가계부 수정: PUT /api/account-book/{id}
 }
