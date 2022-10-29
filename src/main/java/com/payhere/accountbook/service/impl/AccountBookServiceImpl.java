@@ -42,8 +42,8 @@ public class AccountBookServiceImpl implements AccountBookService {
 	}
 
 	@Override
-	public List<AccountBook> getAccountBookList() {
-		return accountBookRepository.findAll();
+	public List<AccountBook> getAccountBookList(Long memberNo) {
+		return accountBookRepository.findAllByMemberNo(memberNo).orElse(null);
 	}
 
 	@Override

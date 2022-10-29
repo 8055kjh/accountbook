@@ -42,8 +42,8 @@ public class AccountBookController {
 	}
 	//가계부 목록 조회
 	@GetMapping
-	public ResponseEntity<?> getAccountBookList() {
-		return ResponseEntity.ok().body(accountBookService.getAccountBookList());
+	public ResponseEntity<?> getAccountBookList(@AuthenticationPrincipal AuthenticatedUser user) {
+		return ResponseEntity.ok().body(accountBookService.getAccountBookList(user.getMemberNo()));
 	}
 
 	//가계부 조회

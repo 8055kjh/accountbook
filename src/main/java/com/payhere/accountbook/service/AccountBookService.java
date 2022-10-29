@@ -14,7 +14,7 @@ import com.payhere.accountbook.domain.enntity.AccountBook;
 public interface AccountBookService {
 	void registerAccountBook(AccountBookRegisterDto accountBookRegisterDto, Long memberNo);
 
-	List<AccountBook> getAccountBookList();
+	List<AccountBook> getAccountBookList(Long memberNo);
 
 	AccountBook getAccountBook(Long accountBookNo);
 
