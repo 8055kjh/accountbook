@@ -12,9 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
-import com.payhere.accountbook.domain.dto.AuthenticatedUser;
-import com.payhere.accountbook.service.MemberService;
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
@@ -33,9 +30,6 @@ import lombok.RequiredArgsConstructor;
 public class JwtTokenProvider {
 	private String secretKey = "payhereaccountbook";
 
-	// 토큰 유효시간 1분
-	private long tokenValidTime = 1 * 60 * 1000L;
-
 	private final UserDetailsService userDetailsService;
 
 	// 객체 초기화, secretKey를 Base64로 인코딩한다.
@@ -50,8 +44,8 @@ public class JwtTokenProvider {
 	 * @return
 	 */
 	public String createToken(String userPk) {
+		long tokenValidTime = 10 * 60 * 1000L;// 토큰 유효시간 1분
 		Claims claims = Jwts.claims().setSubject(userPk); // JWT payload 에 저장되는 정보단위, 보통 여기서 user를 식별하는 값을 넣는다.
-		//claims.put("roles", roles); // 정보는 key / value 쌍으로 저장된다.
 		Date now = new Date();
 		return Jwts.builder()
 			.setClaims(claims) // 정보 저장
