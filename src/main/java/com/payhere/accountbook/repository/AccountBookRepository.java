@@ -15,6 +15,6 @@ import com.payhere.accountbook.domain.enntity.AccountBook;
 @Repository
 public interface AccountBookRepository extends JpaRepository<AccountBook, Long> {
 	Optional<AccountBook> findByAccountBookName(String accountBookName);
-
-	AccountBook findByAccountBookNo(Long accountBookNo);
+	Optional<AccountBook> findByAccountBookNoAndDeleteYn(Long accountBookNo, Character deleteYn);
+	Optional<AccountBook> findByAccountBookNo(Long accountBookNo);
 }

@@ -4,15 +4,18 @@ import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.payhere.accountbook.domain.dto.AuthenticatedUser;
 import com.payhere.accountbook.domain.dto.reqeust.AccountBookRegisterDto;
+import com.payhere.accountbook.domain.dto.reqeust.AccountBookUpdateDto;
 import com.payhere.accountbook.service.AccountBookService;
 
 import lombok.RequiredArgsConstructor;
@@ -48,5 +51,17 @@ public class AccountBookController {
 	public ResponseEntity<?> getAccountBook(@PathVariable Long accountBookNo) {
 		return ResponseEntity.ok().body(accountBookService.getAccountBook(accountBookNo));
 	}
-	// - [ ]  가계부 수정: PUT /api/account-book/{id}
+
+	//가계부 수정: PUT /api/account-book/{id}
+	@PutMapping("/{accountBookNo}")
+	ResponseEntity<?> updateAccountBook(@PathVariable Long accountBookNo, @Valid @RequestBody AccountBookUpdateDto accountBookUpdateDto) {
+		return ResponseEntity.ok().body(accountBookService.updateAccountBook(accountBookNo, accountBookUpdateDto));
+	}
+
+	//가계부 삭제: DELETE /api/account-book/{id}
+	@DeleteMapping("/{accountBookNo}")
+	ResponseEntity<?> deleteAccountBook(@PathVariable Long accountBookNo) {
+		accountBookService.deleteAccountBook(accountBookNo);
+		return ResponseEntity.ok().build();
+	}
 }
