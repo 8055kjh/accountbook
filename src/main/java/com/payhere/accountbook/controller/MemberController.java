@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.payhere.accountbook.dto.MemberSignUpDto;
+import com.payhere.accountbook.domain.dto.MemberSignUpDto;
 import com.payhere.accountbook.service.MemberService;
 
 import lombok.RequiredArgsConstructor;

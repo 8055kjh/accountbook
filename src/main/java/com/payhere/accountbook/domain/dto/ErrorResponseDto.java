@@ -1,4 +1,4 @@
-package com.payhere.accountbook.dto;
+package com.payhere.accountbook.domain.dto;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -16,8 +16,11 @@ public class ErrorResponseDto {
 	private String msg;
 	private Object data;
 
-	public ErrorResponseDto(String msg, Object data) {
+	private String code;
+
+	public ErrorResponseDto(String msg, Object data, String code) {
 		this.msg = msg;
 		this.data = data;
+		this.code = code;
 	}
 }

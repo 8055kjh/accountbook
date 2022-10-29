@@ -1,4 +1,4 @@
-package com.payhere.accountbook.enntity;
+package com.payhere.accountbook.domain.enntity;
 
 import java.time.LocalDateTime;
 

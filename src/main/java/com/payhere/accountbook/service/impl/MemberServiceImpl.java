@@ -4,8 +4,9 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
-import com.payhere.accountbook.dto.MemberSignUpDto;
-import com.payhere.accountbook.enntity.Member;
+import com.payhere.accountbook.domain.dto.MemberSignUpDto;
+import com.payhere.accountbook.domain.enntity.Member;
+import com.payhere.accountbook.exception.ExistMemberException;
 import com.payhere.accountbook.repository.MemberRepository;
 import com.payhere.accountbook.service.MemberService;
 
@@ -43,7 +44,9 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean isExistMember(MemberSignUpDto memberSignUpDto) {
 		Member member = memberRepository.findByMemberEmail(memberSignUpDto.getEmail());
-		if(member != null) return false;
+		if(member != null) {
+			throw new ExistMemberException();
+		}
 		return true;
 	}
 }

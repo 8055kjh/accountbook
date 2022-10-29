@@ -1,7 +1,7 @@
 package com.payhere.accountbook.service;
 
-import com.payhere.accountbook.dto.MemberSignUpDto;
-import com.payhere.accountbook.enntity.Member;
+import com.payhere.accountbook.domain.dto.MemberSignUpDto;
+import com.payhere.accountbook.domain.enntity.Member;
 
 /**
  * @author jhkim

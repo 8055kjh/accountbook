@@ -1,0 +1,36 @@
+package com.payhere.accountbook.domain;
+
+/**
+ * @author jhkim
+ * @since 2022-10-29
+ *
+ */
+public enum SpecificExceptionCode {
+	EXIST_MEMBER_EXCEPTION(500,'M',"이미 가입된 회원의 정보입니다."),
+	VALIDATION_EXCEPTION(400,'M',"입력값이 잘못되었습니다.");
+	private final int httpCode;
+	private final char exceptionGroup;
+	private final String msgDetail;
+
+	SpecificExceptionCode(final int httpCode, final char exceptionGroup, final String msgDetail) {
+		this.httpCode = httpCode;
+		this.exceptionGroup = exceptionGroup;
+		this.msgDetail = msgDetail;
+	}
+
+	public String getExceptionCode() {
+		return exceptionGroup + Integer.toString(httpCode);
+	}
+
+	public String getMsgDetail() {
+		return msgDetail;
+	}
+
+	public int getHttpCode() {
+		return httpCode;
+	}
+
+	public char getExceptionGroup() {
+		return exceptionGroup;
+	}
+}

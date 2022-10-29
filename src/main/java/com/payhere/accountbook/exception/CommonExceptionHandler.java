@@ -6,7 +6,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.payhere.accountbook.dto.ErrorResponseDto;
+import com.payhere.accountbook.domain.SpecificExceptionCode;
+import com.payhere.accountbook.domain.dto.ErrorResponseDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,12 +19,26 @@ import lombok.extern.slf4j.Slf4j;
 @ControllerAdvice
 @Slf4j
 public class CommonExceptionHandler {
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<ErrorResponseDto> handleValidationException(MethodArgumentNotValidException e) {
 		ErrorResponseDto errorResponseDto = ErrorResponseDto
 			.builder()
+			.code(SpecificExceptionCode.VALIDATION_EXCEPTION.getExceptionCode())
 			.msg(e.getBindingResult().getAllErrors().get(0).getDefaultMessage())
 			.build();
-		return new ResponseEntity<ErrorResponseDto>(errorResponseDto, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(errorResponseDto, HttpStatus.BAD_REQUEST);
+	}
+
+	@ExceptionHandler(CustomException.class)
+	public ResponseEntity<ErrorResponseDto> handleCustomException(CustomException e) {
+		SpecificExceptionCode exceptionCode = e.getExceptionCode();
+		ErrorResponseDto responseDto = ErrorResponseDto
+			.builder()
+			.code(exceptionCode.getExceptionCode())
+			.msg(exceptionCode.getMsgDetail())
+			.data(null)
+			.build();
+		return new ResponseEntity<>(responseDto, HttpStatus.BAD_REQUEST);
 	}
 }

@@ -1,4 +1,4 @@
-package com.payhere.accountbook.dto;
+package com.payhere.accountbook.domain.dto;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
