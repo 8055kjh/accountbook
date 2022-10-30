@@ -4,20 +4,18 @@ spring:
       name: user
       password: 1234
   datasource:
-    url: jdbc:h2:~/accountbook;
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:13306/simple
+    username: root
+    password: simple
   jpa:
     hibernate:
       ddl-auto: create
     properties:
       hibernate:
         format_sql: true #logger를 통해 로그 출력
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+    generate-ddl: true
+    show-sql: true
 logging :
   root: info
   level:
