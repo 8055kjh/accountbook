@@ -21,13 +21,11 @@ import lombok.RequiredArgsConstructor;
  */
 
 @RequiredArgsConstructor
-//@Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private final JwtTokenProvider jwtTokenProvider;
 
-	// authenticationManager를 Bean 등록합니다.
 
 	@Bean
 	@Override
