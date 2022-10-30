@@ -44,7 +44,7 @@ public class JwtTokenProvider {
 	 * @return
 	 */
 	public String createToken(String userPk) {
-		long tokenValidTime = 10 * 60 * 1000L;// 토큰 유효시간 1분
+		long tokenValidTime = 30 * 60 * 1000L;// 토큰 유효시간 1분
 		Claims claims = Jwts.claims().setSubject(userPk); // JWT payload 에 저장되는 정보단위, 보통 여기서 user를 식별하는 값을 넣는다.
 		Date now = new Date();
 		return Jwts.builder()

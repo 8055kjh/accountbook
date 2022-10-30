@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/member")
+@RequestMapping("/api/member")
 public class MemberController {
 
 	private final MemberService memberService;

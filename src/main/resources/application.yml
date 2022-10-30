@@ -23,7 +23,7 @@ logging :
   level:
     org:
       hibernate:
-        type : trace
+        type : INFO
       springframework:
-        security: DEBUG
+        security: INFO
 

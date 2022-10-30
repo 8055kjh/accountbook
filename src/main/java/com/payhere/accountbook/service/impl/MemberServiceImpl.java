@@ -2,6 +2,7 @@ package com.payhere.accountbook.service.impl;
 
 import java.time.LocalDateTime;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.payhere.accountbook.domain.dto.MemberSignUpDto;
@@ -24,6 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberServiceImpl implements MemberService {
 
 	private final MemberRepository memberRepository;
+	private final PasswordEncoder passwordEncoder;
 
 	@Override
 	public Member signUp(MemberSignUpDto memberSignUpDto) {
@@ -33,7 +35,7 @@ public class MemberServiceImpl implements MemberService {
 		if(isExist) {
 			memberEntity.setMemberName(memberSignUpDto.getName());
 			memberEntity.setMemberEmail(memberSignUpDto.getEmail());
-			memberEntity.setMemberPassword(memberSignUpDto.getPassword());
+			memberEntity.setMemberPassword(passwordEncoder.encode(memberSignUpDto.getPassword()));
 			memberEntity.setMemberSignupDate(LocalDateTime.now());
 			return memberRepository.save(memberEntity);
 		}
@@ -50,5 +52,9 @@ public class MemberServiceImpl implements MemberService {
 		return true;
 	}
 
+	@Override
+	public Member getMemberDetail(Long memberNo) {
+		 return memberRepository.findAccountBookListByMemberNo(memberNo).orElse(null);
+	}
 
 }
