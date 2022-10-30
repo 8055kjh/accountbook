@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.payhere.accountbook.domain.SpecificExceptionCode;
 import com.payhere.accountbook.domain.dto.AuthenticationRequestDto;
 import com.payhere.accountbook.exception.UnauthorizedException;
 import com.payhere.accountbook.service.AuthenticationService;
@@ -20,7 +21,7 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthenticationController {
 
 	private final AuthenticationService authenticationService;
@@ -30,7 +31,7 @@ public class AuthenticationController {
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(authenticationService.login(authenticationRequestDto));
 		} catch (Exception e) {
-			throw new UnauthorizedException();
+			throw new UnauthorizedException(SpecificExceptionCode.NOT_EXIST_MEMBER_EXCEPTION);
 		}
 	}
 }

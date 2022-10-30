@@ -10,6 +10,7 @@ public enum SpecificExceptionCode {
 	EXIST_MEMBER_EXCEPTION(500,'M',"이미 가입된 회원의 정보입니다."),
 	EXIST_ACCOUNT_BOOK_EXCEPTION(500,'A',"이미 존재하는 가계부명입니다."),
 	NOT_EXIST_ACCOUNT_BOOK_EXCEPTION(500,'A',"등록되지않은 가계부명입니다."),
+	NOT_EXIST_ACCOUNT_BOOK_DETAIL_EXCEPTION(500,'D',"등록되지않은 가계부 상세입니다."),
 	VALIDATION_EXCEPTION(400,'M',"입력값이 잘못되었습니다.");
 	private final int httpCode;
 	private final char exceptionGroup;

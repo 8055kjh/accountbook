@@ -11,4 +11,5 @@ import com.payhere.accountbook.domain.enntity.Member;
 public interface MemberService {
 	Member signUp(MemberSignUpDto memberSignUpDto);
 	boolean isExistMember(MemberSignUpDto memberSignUpDto);
+	Member getMemberDetail(Long memberNo);
 }
